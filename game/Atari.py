@@ -1,5 +1,5 @@
 from ale_python_interface import ALEInterface
-import numpy as np 
+import numpy as np
 import cv2
 from random import randrange
 
@@ -31,11 +31,11 @@ class Atari:
 		return self.get_image()
 
 	def next(self, action):
-		reward = self.ale.act(self.legal_actions[np.argmax(action)])	
+		reward = self.ale.act(self.legal_actions[np.argmax(action)])
 		nextstate = self.get_image()
-		
+
 		cv2.imshow(self.windowname,nextstate)
 		if self.ale.game_over():
 			self.newGame()
-		#print "reward %d" % reward 
+		#print "reward %d" % reward
 		return nextstate, reward, self.ale.game_over()
