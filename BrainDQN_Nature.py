@@ -57,7 +57,7 @@ class BrainDQN:
         # saving and loading networks
         self.saver = tf.train.Saver()
         tfconfig = tf.ConfigProto(allow_soft_placement=True)
-        tfconfig.gpu_options.allow_growth=True
+        tfconfig.gpu_options.allow_growth = True
         self.session = tf.InteractiveSession(config=tfconfig)
         self.session.run(tf.initialize_all_variables())
         checkpoint = tf.train.get_checkpoint_state("saved_networks")
