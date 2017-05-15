@@ -4,6 +4,7 @@
 # Date: 2016.3.21
 # -----------------------------
 
+import os
 import tensorflow as tf
 import numpy as np
 import random
@@ -148,6 +149,9 @@ class BrainDQN:
 
         # save network every 100000 iteration
         if self.timeStep % 10000 == 0:
+            # Create output path if required
+            if os.path.isdir('saved_networks'):
+                os.makedirs('saved_networks')
             self.saver.save(self.session, 'saved_networks/' +
                             'network' + '-dqn', global_step=self.timeStep)
 
